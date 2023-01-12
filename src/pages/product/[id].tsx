@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import {
   ImageContainer,
   ProductContainer,
@@ -48,18 +47,18 @@ export default function Product({ product }: ProductProps) {
   return (
     <>
       <Head>
-        <title>{product.name} | Ignite Shop</title>
+        <title>{product?.name} | Ignite Shop</title>
       </Head>
       <ProductContainer>
         <ImageContainer>
-          <Image src={product.imageUrl} width={520} height={480} alt="" />
+          <Image src={product?.imageUrl} width={520} height={480} alt="" />
         </ImageContainer>
 
         <ProductDetails>
-          <h1>{product.name}</h1>
-          <span>{product.price}</span>
+          <h1>{product?.name}</h1>
+          <span>{product?.price}</span>
 
-          <p>{product.description}</p>
+          <p>{product?.description}</p>
 
           <button
             disabled={isCreatingCheckoutSession}
@@ -75,7 +74,7 @@ export default function Product({ product }: ProductProps) {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths: [{ params: { id: "" } }],
+    paths: [],
     fallback: true,
   };
 };
@@ -83,7 +82,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps<any, { id: string }> = async ({
   params,
 }) => {
-  const productId = params?.id || "0";
+  const productId = params!.id;
 
   const product = await stripe.products.retrieve(productId, {
     expand: ["default_price"],
