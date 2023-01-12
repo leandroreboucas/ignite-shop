@@ -48,6 +48,7 @@ export default function Product({ product }: ProductProps) {
     <>
       <Head>
         <title>{product?.name} | Ignite Shop</title>
+        <meta name="description" content={product?.description}></meta>
       </Head>
       <ProductContainer>
         <ImageContainer>

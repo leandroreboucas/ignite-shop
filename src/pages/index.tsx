@@ -29,6 +29,10 @@ export default function Home({ products }: HomeProps) {
     <>
       <Head>
         <title>Home | Ignite Shop</title>
+        <meta
+          name="description"
+          content="Ignite Shop é um sistema desenvolvido por Leandro Rebouças usando as tecnologias React, NextJS, Typescript e Stripe."
+        ></meta>
       </Head>
       <HomeContainer ref={sliderRef} className="keen-slider">
         {products.map((product) => (
